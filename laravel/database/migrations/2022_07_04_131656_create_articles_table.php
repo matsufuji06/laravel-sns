@@ -14,7 +14,14 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
+            // カラムを定義
             $table->bigIncrements('id');
+            //==========ここから追加==========
+            $table->string('title');
+            $table->text('body');
+            $table->bigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            //==========ここまで追加==========
             $table->timestamps();
         });
     }
