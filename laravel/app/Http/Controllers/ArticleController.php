@@ -11,20 +11,15 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     public function index() {
-       
 
-
-        
-
-        //==========ここから追加==========
         $articles = Article::all()->sortByDesc('created_at');
-        //==========ここまで追加==========
-
 
         return view('articles.index', ['articles' => $articles]);
         // return view('articles.index')->with(['articles' => $articles]);
         // return view('articles.index', compact('articles'));
+    }
 
-
+    public function create() {
+        return view('articles.create');
     }
 }
